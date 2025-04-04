@@ -206,157 +206,122 @@
     </div>
   </div>
 
-  <!-- لوحة التحكم -->
+  <!-- لوحة التحكم (مع تبويبات متطورة) -->
   <div class="edit-panel" id="editPanel">
     <h2 id="editTitle">لوحة التحكم</h2>
-    <!-- الإعدادات الأساسية -->
-    <div class="form-group">
-      <label for="editName" id="editNameLabel">الاسم الكامل:</label>
-      <input type="text" id="editName" class="form-control" />
+    <div class="edit-tabs">
+      <button class="tab active" data-tab="profileTab">بيانات البروفايل</button>
+      <button class="tab" data-tab="sectionsTab">إعدادات الأقسام</button>
+      <button class="tab" data-tab="layoutTab">التخطيط العام</button>
     </div>
-    <div class="form-group">
-      <label for="editJob" id="editJobLabel">المسمى الوظيفي:</label>
-      <input type="text" id="editJob" class="form-control" />
+    <!-- تبويب بيانات البروفايل -->
+    <div class="tab-content active" id="profileTab">
+      <div class="form-group">
+        <label for="editName">الاسم الكامل:</label>
+        <input type="text" id="editName" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editJob">المسمى الوظيفي:</label>
+        <input type="text" id="editJob" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editProfileImage">تغيير صورة البروفايل:</label>
+        <input type="file" id="editProfileImage" accept="image/*" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editProfileShape">اختر شكل الصورة الشخصية:</label>
+        <select id="editProfileShape" class="form-control">
+          <option value="50%">دائري</option>
+          <option value="0%">مربع</option>
+          <option value="10%">مستدير قليلاً</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="editProfileImage" id="editImgLabel">تغيير صورة البروفايل:</label>
-      <input type="file" id="editProfileImage" accept="image/*" class="form-control" />
+    <!-- تبويب إعدادات الأقسام -->
+    <div class="tab-content" id="sectionsTab">
+      <div class="form-group">
+        <label for="editEventsTitle">عنوان الأحداث القادمة:</label>
+        <input type="text" id="editEventsTitle" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editEvent1">الحدث 1:</label>
+        <input type="text" id="editEvent1" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editEvent2">الحدث 2:</label>
+        <input type="text" id="editEvent2" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editChronicTitle">عنوان قسم أمراض مزمنة:</label>
+        <input type="text" id="editChronicTitle" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editChronicList">الأمراض المزمنة (افصلها بفاصلة):</label>
+        <input type="text" id="editChronicList" class="form-control" placeholder="مرض1, مرض2, ..." />
+      </div>
+      <div class="form-group">
+        <label for="editUpcomingProjectsTitle">عنوان قسم المشاريع القادمة:</label>
+        <input type="text" id="editUpcomingProjectsTitle" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editProjectsList">المشاريع القادمة (افصلها بفاصلة):</label>
+        <input type="text" id="editProjectsList" class="form-control" placeholder="مشروع1, مشروع2, ..." />
+      </div>
+      <div class="form-group">
+        <label for="editTestimonialsTitle">عنوان قسم الشهادات:</label>
+        <input type="text" id="editTestimonialsTitle" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editTestimonialsContent">محتوى قسم الشهادات:</label>
+        <input type="text" id="editTestimonialsContent" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="editCertificatesCount">عدد الشهادات:</label>
+        <input type="number" id="editCertificatesCount" class="form-control" placeholder="مثلاً 3" />
+      </div>
+      <div class="form-group">
+        <label for="editCertificateImage">صورة الشهادة (إن وجدت):</label>
+        <input type="file" id="editCertificateImage" accept="image/*" class="form-control" />
+      </div>
     </div>
-    <!-- خيارات خلفية الهيدر مع 15 خياراً -->
-    <div class="form-group">
-      <label for="editHeaderBgSelect" id="editHeaderLabel">اختر خلفية الهيدر:</label>
-      <select id="editHeaderBgSelect" class="form-control">
-        <option value="linear-gradient(135deg, #2c3e50, #3498db)">خيار 1</option>
-        <option value="linear-gradient(135deg, #1abc9c, #16a085)">خيار 2</option>
-        <option value="linear-gradient(135deg, #9b59b6, #8e44ad)">خيار 3</option>
-        <option value="linear-gradient(135deg, #e74c3c, #c0392b)">خيار 4</option>
-        <option value="linear-gradient(135deg, #f1c40f, #f39c12)">خيار 5</option>
-        <option value="linear-gradient(135deg, #34495e, #2c3e50)">خيار 6</option>
-        <option value="linear-gradient(135deg, #e67e22, #d35400)">خيار 7</option>
-        <option value="linear-gradient(135deg, #1abc9c, #2ecc71)">خيار 8</option>
-        <option value="linear-gradient(135deg, #3498db, #2980b9)">خيار 9</option>
-        <option value="linear-gradient(135deg, #9b59b6, #bdc3c7)">خيار 10</option>
-        <option value="#ff6f61">خيار 11</option>
-        <option value="#6b5b95">خيار 12</option>
-        <option value="#88b04b">خيار 13</option>
-        <option value="#f7cac9">خيار 14</option>
-        <option value="#92a8d1">خيار 15</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="editCopyright" id="editCopyLabel">نص الحقوق:</label>
-      <input type="text" id="editCopyright" class="form-control" placeholder="جميع الحقوق محفوظة © 2025" />
-    </div>
-    <div class="form-group">
-      <label for="editProfileShape" id="editShapeLabel">اختر شكل الصورة الشخصية:</label>
-      <select id="editProfileShape" class="form-control">
-        <option value="50%">دائري</option>
-        <option value="0%">مربع</option>
-        <option value="10%">مستدير قليلاً</option>
-      </select>
-    </div>
-    <!-- تم حذف خيارات الصوت والصور الخلفية -->
-    <div class="form-group">
-      <label for="portfolioLayout">تبديل تخطيط البورتفوليو:</label>
-      <select id="portfolioLayout" class="form-control">
-        <option value="grid">شبكي</option>
-        <option value="list">قائمة</option>
-      </select>
-    </div>
-    <!-- تعبئة محتوى الأقسام -->
-    <hr />
-    <h3>تعبئة محتوى الأقسام</h3>
-    <!-- أحداث قادمة -->
-    <div class="form-group">
-      <label>عنوان الأحداث القادمة:</label>
-      <input type="text" id="editEventsTitle" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>الحدث 1:</label>
-      <input type="text" id="editEvent1" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>الحدث 2:</label>
-      <input type="text" id="editEvent2" class="form-control" />
-    </div>
-    <!-- أمراض مزمنة -->
-    <div class="form-group">
-      <label>عنوان قسم أمراض مزمنة:</label>
-      <input type="text" id="editChronicTitle" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>الأمراض المزمنة (افصلها بفاصلة):</label>
-      <input type="text" id="editChronicList" class="form-control" placeholder="مرض1, مرض2, ..." />
-    </div>
-    <!-- مشاريع قادمة -->
-    <div class="form-group">
-      <label>عنوان قسم المشاريع القادمة:</label>
-      <input type="text" id="editUpcomingProjectsTitle" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>المشاريع القادمة (افصلها بفاصلة):</label>
-      <input type="text" id="editProjectsList" class="form-control" placeholder="مشروع1, مشروع2, ..." />
-    </div>
-    <!-- شهادات -->
-    <div class="form-group">
-      <label>عنوان قسم الشهادات:</label>
-      <input type="text" id="editTestimonialsTitle" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>محتوى قسم الشهادات:</label>
-      <input type="text" id="editTestimonialsContent" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>عدد الشهادات:</label>
-      <input type="number" id="editCertificatesCount" class="form-control" placeholder="مثلاً 3" />
-    </div>
-    <div class="form-group">
-      <label>صورة الشهادة (إن وجدت):</label>
-      <input type="file" id="editCertificateImage" accept="image/*" class="form-control" />
-    </div>
-    <!-- خيارات إظهار/إخفاء الأقسام -->
-    <hr />
-    <h3>عرض/إخفاء الأقسام</h3>
-    <div class="form-group">
-      <label>عرض/إخفاء البورتفوليو:</label>
-      <button type="button" id="togglePortfolioVisibility" onclick="toggleSection('portfolioSection')" class="eye-btn">
-        <i class="fas fa-eye"></i>
-      </button>
-    </div>
-    <div class="form-group">
-      <label>عرض/إخفاء الأحداث القادمة:</label>
-      <button type="button" id="toggleEventsVisibility" onclick="toggleSection('eventsSection')" class="eye-btn">
-        <i class="fas fa-eye"></i>
-      </button>
-    </div>
-    <div class="form-group">
-      <label>عرض/إخفاء امراض مزمنة:</label>
-      <button type="button" id="toggleChronicVisibility" onclick="toggleSection('chronicSection')" class="eye-btn">
-        <i class="fas fa-eye"></i>
-      </button>
-    </div>
-    <div class="form-group">
-      <label>عرض/إخفاء المشاريع القادمة:</label>
-      <button type="button" id="toggleUpcomingProjectsVisibility" onclick="toggleSection('upcomingProjectsSection')" class="eye-btn">
-        <i class="fas fa-eye"></i>
-      </button>
-    </div>
-    <div class="form-group">
-      <label>عرض/إخفاء شهادات:</label>
-      <button type="button" id="toggleTestimonialsVisibility" onclick="toggleSection('testimonialsSection')" class="eye-btn">
-        <i class="fas fa-eye"></i>
-      </button>
+    <!-- تبويب التخطيط العام -->
+    <div class="tab-content" id="layoutTab">
+      <div class="form-group">
+        <label for="editHeaderBgSelect">اختر خلفية الهيدر:</label>
+        <select id="editHeaderBgSelect" class="form-control">
+          <option value="linear-gradient(135deg, #2c3e50, #3498db)">خيار 1</option>
+          <option value="linear-gradient(135deg, #1abc9c, #16a085)">خيار 2</option>
+          <option value="linear-gradient(135deg, #9b59b6, #8e44ad)">خيار 3</option>
+          <option value="linear-gradient(135deg, #e74c3c, #c0392b)">خيار 4</option>
+          <option value="linear-gradient(135deg, #f1c40f, #f39c12)">خيار 5</option>
+          <option value="linear-gradient(135deg, #34495e, #2c3e50)">خيار 6</option>
+          <option value="linear-gradient(135deg, #e67e22, #d35400)">خيار 7</option>
+          <option value="linear-gradient(135deg, #1abc9c, #2ecc71)">خيار 8</option>
+          <option value="linear-gradient(135deg, #3498db, #2980b9)">خيار 9</option>
+          <option value="linear-gradient(135deg, #9b59b6, #bdc3c7)">خيار 10</option>
+          <option value="#ff6f61">خيار 11</option>
+          <option value="#6b5b95">خيار 12</option>
+          <option value="#88b04b">خيار 13</option>
+          <option value="#f7cac9">خيار 14</option>
+          <option value="#92a8d1">خيار 15</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="portfolioLayout">تبديل تخطيط البورتفوليو:</label>
+        <select id="portfolioLayout" class="form-control">
+          <option value="grid">شبكي</option>
+          <option value="list">قائمة</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editCopyright">نص الحقوق:</label>
+        <input type="text" id="editCopyright" class="form-control" placeholder="جميع الحقوق محفوظة © 2025" />
+      </div>
     </div>
     <div class="button-group">
-      <button class="btn btn-primary" onclick="saveEdits()" id="saveEditsBtn">
-        حفظ التغييرات
-      </button>
-      <button class="btn btn-secondary" onclick="resetDefaults()" id="resetDefaultsBtn">
-        إعادة الإعدادات
-      </button>
-      <button class="btn btn-secondary" onclick="closeEditPanel()" id="cancelEditsBtn">
-        إلغاء
-      </button>
+      <button class="btn btn-primary" onclick="saveEdits()" id="saveEditsBtn">حفظ التغييرات</button>
+      <button class="btn btn-secondary" onclick="resetDefaults()" id="resetDefaultsBtn">إعادة الإعدادات</button>
+      <button class="btn btn-secondary" onclick="closeEditPanel()" id="cancelEditsBtn">إلغاء</button>
     </div>
   </div>
 
