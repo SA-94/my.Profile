@@ -1,0 +1,447 @@
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #1abc9c;
+  --secondary-color: #3498db;
+  --text-color: #34495e;
+  --bg-color: #f8f9fa;
+  --transition: all 0.3s ease;
+  --modal-bg: #fff;
+}
+
+[data-theme="dark"] {
+  --primary-color: #1e272e;
+  --accent-color: #0fb9b1;
+  --secondary-color: #1e90ff;
+  --text-color: #ecf0f1;
+  --bg-color: #2f3640;
+  --modal-bg: #3b3b3b;
+}
+
+/* استعادة تنسيق عام */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+/* مؤشر التحميل */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--accent-color);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* شريط علوي للأزرار */
+#top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary-color);
+  padding: 5px 10px;
+  text-align: right;
+  z-index: 1500;
+}
+.top-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* الهيدر */
+.header {
+  text-align: center;
+  padding: 5rem 1rem 4rem; /* نترك مساحة للشريط العلوي */
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--bg-color);
+  transform: skewY(-3deg);
+}
+.profile-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  object-fit: cover;
+}
+.profile-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* زر الإعدادات */
+.secret-trigger {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  top: 20px;
+  left: 20px;
+}
+.secret-trigger:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* الأقسام العامة */
+.content-section {
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* قسم المهارات */
+#skillsTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.skill-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: var(--transition);
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+.skill-card i {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+.progress {
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 20px;
+  margin: 10px 0;
+}
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent-color);
+  border-radius: 20px;
+  transition: width 1.5s ease;
+}
+
+/* قسم البورتفوليو */
+#portfolioTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.portfolio-filters {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.portfolio-filters button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: none;
+  background: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.portfolio-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: var(--transition);
+}
+.portfolio-card:hover {
+  transform: translateY(-5px);
+}
+.portfolio-card i {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+/* الأقسام */
+#eventsSection,
+#chronicSection,
+#upcomingProjectsSection,
+#testimonialsSection {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+#eventsTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* قسم التواصل */
+.contact-form {
+  padding: 2rem;
+  background: white;
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+.contact-form form input,
+.contact-form form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.contact-form form button {
+  padding: 10px 20px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* قسم المشاركة */
+.social-share {
+  text-align: center;
+  margin: 2rem 0;
+}
+.social-share a {
+  margin: 0 10px;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+/* زر العودة للأعلى */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+  transition: var(--transition);
+}
+#backToTop i {
+  font-size: 1.2rem;
+}
+
+/* المودال ولوحة التحكم */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  animation: modalFade 0.3s;
+}
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal-content {
+  background: var(--modal-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-50px);
+  animation: modalSlide 0.3s forwards;
+}
+@keyframes modalSlide {
+  to {
+    transform: translateY(0);
+  }
+}
+.modal input {
+  width: 100%;
+  padding: 12px;
+  margin: 1rem 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.modal input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+.modal button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-top: 1rem;
+}
+.modal button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.edit-panel {
+  display: none;
+  background: var(--modal-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+}
+.edit-panel h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-group label {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.form-control {
+  flex: 2;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.form-control:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 8px rgba(26, 188, 156, 0.3);
+}
+.eye-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+}
+.btn-secondary {
+  background: #ccc;
+  color: #000;
+}
+
+#certificateImg {
+  display: block;
+  max-width: 200px;
+  margin-top: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
