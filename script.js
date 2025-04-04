@@ -64,7 +64,7 @@ function openEditPanel() {
   document.getElementById("editJob").value = document.getElementById("job").innerText;
   document.getElementById("editHeaderBgSelect").value = document.getElementById("header").style.background || defaultSettings.headerBg;
   document.getElementById("editCopyright").value = document.getElementById("footerCopyright").innerText;
-  document.getElementById("editProfileShape").value = window.getComputedStyle(document.getElementById("profileImg")).borderRadius.toString();
+  document.getElementById("editProfileShape").value = window.getComputedStyle(document.getElementById("profileImg")).borderRadius;
 
   // تعبئة حقول الأقسام
   document.getElementById("editEventsTitle").value = document.getElementById("eventsTitle").innerText;
@@ -77,6 +77,16 @@ function openEditPanel() {
   document.getElementById("editTestimonialsTitle").value = document.getElementById("testimonialsTitle").innerText;
   document.getElementById("editTestimonialsContent").value = document.getElementById("testimonialsContent").innerText;
   document.getElementById("editCertificatesCount").value = localStorage.getItem("certificatesCount") || 1;
+  
+  // استعادة الصور إن وجدت
+  const storedProfileImage = localStorage.getItem("profileImage");
+  if(storedProfileImage) {
+    document.getElementById("profileImg").src = storedProfileImage;
+  }
+  const storedCertificate = localStorage.getItem("certificateImage");
+  if(storedCertificate) {
+    document.getElementById("certificateImg").src = storedCertificate;
+  }
 
   document.getElementById("editPanel").style.display = "block";
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -180,6 +190,32 @@ function showSuccess(message) {
   document.body.appendChild(successElem);
   setTimeout(() => successElem.remove(), 2000);
 }
+
+// معالجة رفع صورة البروفايل
+document.getElementById("editProfileImage").addEventListener("change", function(){
+  const file = this.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      document.getElementById("profileImg").src = e.target.result;
+      localStorage.setItem("profileImage", e.target.result);
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+// معالجة رفع صورة الشهادة
+document.getElementById("editCertificateImage").addEventListener("change", function(){
+  const file = this.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      document.getElementById("certificateImg").src = e.target.result;
+      localStorage.setItem("certificateImage", e.target.result);
+    }
+    reader.readAsDataURL(file);
+  }
+});
 
 // فلترة البورتفوليو
 function filterPortfolio(category) {
@@ -410,3 +446,13 @@ function applyPortfolioLayout(layout) {
     document.querySelector(".portfolio-grid").style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))";
   }
 }
+
+// تبويبات لوحة التحكم
+document.querySelectorAll(".edit-tabs .tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".edit-tabs .tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  });
+});
